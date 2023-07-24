@@ -71,6 +71,17 @@ public class UsuarioController {
 
 	
 	
+	//ACTUALIZAR  Usuario - Usa el mismo método que guardar usuario
+		@PutMapping("/actualizarUsuarioDTO")
+		public ResponseEntity<Object>actualizarUsuario(@RequestBody UsuarioDTO usuarioDto){
+			try {
+				return usuarioService.guardarUsuario(usuarioDto);
+				
+			} catch(Exception e) {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
+			}
+		}
+	
 	//ELIMINAR USUARIO POR id
 		@DeleteMapping ("/borrarUsuario/{id}")
 
