@@ -40,7 +40,7 @@ public class UsuarioService {
 		//Mostrar mensaje con pares clave-valor
 		HashMap<String,Object> mensaje =new HashMap <>();
 		
-		
+		//Verifica si ya existe un usuario con el mismo email
 		if (res.isPresent() && usuarioDto.getId_usuario()==null ) {
 			
 			//Mostrar mensaje de que ya existe un usuario con ese email
@@ -51,11 +51,21 @@ public class UsuarioService {
 			
 		}
 		
+		//Si no existe se guarda el mensaje de usuario registrado
 		//Agregar al mensaje que se registró correctamente
 		mensaje.put("message","Se registró usuario correctamente");
 		
-		//ACTUALIZAR USUARIO		
-		//Si llega el id sería para actualizar el usuario
+		//ACTUALIZAR USUARIO	
+		
+		//Para verificar si el repositorio no está vacío y se quiere actualizar un domicilio y se cambian los mensajes
+		if (res.isPresent()==false  && usuarioDto.getId_usuario() !=null && usuarioRepository.count()==0   ) {
+			mensaje.put("error", true);
+			mensaje.put("message","Usuario no encontrado");
+			
+			return new ResponseEntity<>(mensaje,HttpStatus.CONFLICT );
+		}		
+		
+		//Si llega el id sería para actualizar el usuario y se cambian los mensajes
 		if(usuarioDto.getId_usuario() !=null) {
 			mensaje.put("message","Se actualizó usuario correctamente");
 		}
@@ -75,7 +85,7 @@ public class UsuarioService {
 		
 		//Guardar Usuario
 		usuarioRepository.save(usuario);
-		
+			
 		//Mostrar mensaje de que se registró el usuario correctamente
 		mensaje.put("datos", usuario);
 		
