@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario/usuario.service'; // Asegúrate de que la ruta al servicio sea correcta
 
 //importar libreria sweetalert2 para modals
@@ -27,9 +28,12 @@ export class RegisterComponent implements OnInit {
   botonRegistrarPresionado: boolean = true;
 
 
+
   constructor(
     public fb: FormBuilder,
-    public usuarioService: UsuarioService
+    public usuarioService: UsuarioService,
+    private router: Router
+
   ) { }
 
 
@@ -109,11 +113,12 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  accionBotonAdicional() {
-    // Lógica para lo que debe hacer el botón adicional al ser presionado
+  irADomicilio() {
+    // Lógica para lo que debe hacer el botón de registrar domicilio al ser presionado
     // Direccionar a la pagina de registrar un domicilio
-    console.log('Botón Adicional presionado');
+    this.router.navigateByUrl('/domicilio');
 
+    console.log('Botón Registrar Domicilio presionado');
   }
 
 
