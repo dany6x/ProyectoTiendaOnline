@@ -63,8 +63,11 @@
         <br>
         <!--BOTON REGISTRAR INCLUYENDO VALIDACIÓN PARA QUE SE LLENEN TODOS LOS CAMPOS-->
         <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Registrar</button>
-        <button type="submit" class="btn btn-success" *ngIf="botonRegistrarPresionado" (click)="accionBotonAdicional()"
+
+        <!--BOTON REGISTRAR DOMICILIO QUE SE HABILITA AL REGISTRAR USUARIO Y DIRECCIONA A COMPONENTE DIRECCION-->
+        <button type="submit" class="btn btn-success" *ngIf="botonRegistrarPresionado" (click)="irADomicilio()"
             [disabled]="!botonRegistrarDomicilio">Registrar Domicilio</button>
+
 
     </form>
 </div>
@@ -106,4 +109,4 @@
     </table>
 </div>
 
-<!-- <router-outlet></router-outlet>  -->
+<router-outlet></router-outlet>
