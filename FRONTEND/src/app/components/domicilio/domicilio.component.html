@@ -1,1 +1,137 @@
-<p>domicilio works!</p>
+<div class="formularioRegistro2">
+    <h2>REGISTRAR DOMICILIO</h2>
+    <!--Formulario de registro de DOMICILIO-->
+    <form [formGroup]="domicilioForm" (ngSubmit)="guardar()">
+
+        <div clas="form-group">
+            <label>Calle</label>
+            <input type="text" formControlName="calle" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Número Interior</label>
+            <input type="text" formControlName="numeroInterior" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Número Exterior</label>
+            <input type="text" formControlName="numeroExterior" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Código Postal</label>
+            <input type="text" id="codigoPostal" formControlName="codigoPostal" class="form-control">
+
+            <!-- Validación del campo codigoPostal con alerts -->
+            <div class="alert alert-danger" role="alert"
+                *ngIf="domicilioForm.get('codigoPostal')?.invalid && (domicilioForm.get('codigoPostal')?.dirty || domicilioForm.get('codigoPostal')?.touched)">
+                <div *ngIf="domicilioForm.get('codigoPostal')?.errors?.['required']">El Código Postal es obligatorio.
+                </div>
+                <div *ngIf="domicilioForm.get('codigoPostal')?.errors?.['pattern']">El Código Postal debe tener 5
+                    dígitos.
+                </div>
+            </div>
+        </div>
+
+        <div clas="form-group">
+            <label>Municipio</label>
+            <input type="text" formControlName="municipio" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Colonia</label>
+            <input type="text" formControlName="colonia" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Ciudad</label>
+            <input type="text" formControlName="ciudad" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Entre Calle </label>
+            <input type="text" formControlName="calle2" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>y Calle</label>
+            <input type="text" formControlName="calle3" class="form-control">
+        </div>
+
+        <div clas="form-group">
+            <label>Número de Contacto</label>
+            <input type="text" id="numeroContacto" formControlName="numeroContacto" class="form-control">
+
+            <!-- Validación del campo numeroContacto con alerts -->
+            <div class="alert alert-danger" role="alert"
+                *ngIf="domicilioForm.get('numeroContacto')?.invalid && (domicilioForm.get('numeroContacto')?.dirty || domicilioForm.get('numeroContacto')?.touched)">
+                <div *ngIf="domicilioForm.get('numeroContacto')?.errors?.['required']">El número de contacto es
+                    obligatorio.</div>
+                <div *ngIf="domicilioForm.get('numeroContacto')?.errors?.['pattern']">El número de contacto debe tener
+                    10
+                    dígitos.
+                </div>
+            </div>
+        </div>
+
+        <div clas="form-group">
+            <label>Referencias</label>
+            <input type="text" formControlName="referencias" class="form-control">
+        </div>
+
+        <br>
+        <!--BOTON REGISTRAR INCLUYENDO VALIDACIÓN PARA QUE SE LLENEN TODOS LOS CAMPOS-->
+        <button type="submit" class="btn btn-primary" [disabled]="domicilioForm.invalid">Registrar Domicilio</button>
+
+
+    </form>
+
+
+</div>
+
+<br>
+<div>
+    <h1>LISTA DE DOMICILIOS REGISTRADOS</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Calle</th>
+                <th>Num Int</th>
+                <th>Num Ext</th>
+                <th>CP</th>
+                <th>Municipio</th>
+                <th>Colonia</th>
+                <th>Ciudad</th>
+                <th>Calle 2</th>
+                <th>Calle 3</th>
+                <th>Num Contacto</th>
+                <th>Referencias</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let item of domicilios">
+                <td>{{item.id_domicilio}}</td>
+                <td>{{item.calle}}</td>
+                <td>{{item.numeroInterior}}</td>
+                <td>{{item.numerExterior}}</td>
+                <td>{{item.codigoPostal}}</td>
+                <td>{{item.municipio}}</td>
+                <td>{{item.colonia}}</td>
+                <td>{{item.ciudad}}</td>
+                <td>{{item.calle2}}</td>
+                <td>{{item.calle3}}</td>
+                <td>{{item.numeroContacto}}</td>
+                <td>{{item.referencias}}</td>
+                <td> <!--BOTONES DE EDITAR Y ELIMINAR-->
+                    <button type="button" class="btn btn-success " (click)="editar(item)">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- <router-outlet></router-outlet>  -->
