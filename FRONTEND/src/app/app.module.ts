@@ -12,10 +12,17 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 
+
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { AgregarProductoComponent } from './components/agregar-producto/agregar-producto.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { DomicilioComponent } from './components/domicilio/domicilio.component';
+import { EditarProductoComponent } from './components/editar-producto/editar-producto.component';
+import { PagoComponent } from './components/pago/pago.component';
+import { TablaadminComponent } from './components/tablaadmin/tablaadmin.component'
 
 
 @NgModule({
@@ -26,7 +33,13 @@ import { HttpClientModule } from '@angular/common/http'
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AgregarProductoComponent,
+    CarritoComponent,
+    DomicilioComponent,
+    EditarProductoComponent,
+    PagoComponent,
+    TablaadminComponent
   ],
   imports: [
     BrowserModule,
